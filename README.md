@@ -1,12 +1,10 @@
 # aloam_lidar_odom_result_generate
 
-
 ![Ubuntu 20.04](https://img.shields.io/badge/OS-Ubuntu_20.04-informational?style=flat&logo=ubuntu&logoColor=white&color=2bbc8a)
 ![ROS Noetic](https://img.shields.io/badge/Tools-ROS_Noetic-informational?style=flat&logo=ROS&logoColor=white&color=2bbc8a)
 ![C++](https://img.shields.io/badge/Code-C++-informational?style=flat&logo=c%2B%2B&logoColor=white&color=2bbc8a)
 
-
-![cover_image](src/me5413_world/media/gazebo_world.jpg)
+![evo_result](images/evo_result.png)
 
 ## 1.Dependencies
 
@@ -93,7 +91,7 @@ bin/simple_bundle_adjuster ../ceres-solver-2.1.0/data/problem-16-22106-pre.txt
 ```
 
 The result is show below:
-![cover_image](src/me5413_world/media/gazebo_world.jpg)
+![Ceres_teset_result](images/Ceres_teset_result.png)
 
 ### 2.4 Installation of EVO
 

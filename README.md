@@ -286,7 +286,7 @@ cd catkin_ws
 catkin_make
 ```
 
-###3.2 Perpare to do evo
+### 3.2 Perpare to do evo
 
 Create a new files named "txt", and generate aloam.txt:
 
@@ -297,7 +297,7 @@ touch aloam.txt
 ```
 Then, copy the groundtruth files in the same file
 
-###3.3 Run Aloam
+### 3.3 Run Aloam
 
 There are three launch files in the package related to run Aloam directly, they are:
 
@@ -322,3 +322,11 @@ cd
 cd txt
 evo_ape kitti 05.txt aloam.txt -r full -va --plot --plot_mode xz
 ```
+
+**Note:** Sometime, there will be an error such as the following:
+
+![evo_result](images/evo_result.png)
+
+The error is caused by the different poses number of the two .txt files, and the error can not be dealed with by using "evo_ape kitti 05.txt aloam.txt -r full -va --plot --plot_mode xz --correct_scale --align" commend ([reason](https://github.com/MichaelGrupp/evo/issues/152) is provide by the evo tool's developer - Michael Grupp)
+
+The method I use to deal with the problem is by add or decrease the poses in the groundtruth file

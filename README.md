@@ -9,8 +9,8 @@
 ## 1.Dependencies
 
 * System Requirements:
-  * Ubuntu 20.04 (18.04 not yet tested)
-  * ROS Noetic (Melodic not yet tested)
+  * Ubuntu 20.04
+  * ROS Noetic
   * C++11 and above
   * CMake: 3.0.2 and above
 * Libraries:
@@ -21,6 +21,15 @@
 
 
 ## 2.Installation
+
+**Note:** First of all, make sure you have installed [ros](http://wiki.ros.org/noetic/Installation/Ubuntu)
+
+Install required dependencies:
+
+```bash
+sudo apt-get update
+sudo apt-get install git gcc g++ vim make cmake
+```
 
 ### 2.1 Install Eigen3
 
@@ -51,6 +60,7 @@ sudo cp -r /usr/local/include/eigen3/Eigen /usr/local/include
 The installation of PCL only need one command after ubuntu18.04:
 
 ```bash
+cd 
 sudo apt-get install libpcl-dev pcl-tools
 ```
 
@@ -104,6 +114,7 @@ Installation the Evo tool following the Installation/Upgrade in [evo](https://gi
 First, download Aloam to your computer:
 
 ```bash
+cd 
 mkdir catkin_ws
 cd catkin_ws
 mkdir src
@@ -141,7 +152,7 @@ Modifying the four '.cpp' files in the src file
     ```
 
     ```bash
-    #after nearly line288
+    #after nearly line234
         odomAftMapped.pose.pose.orientation.x = q_w_curr.x();
         odomAftMapped.pose.pose.orientation.y = q_w_curr.y();
         odomAftMapped.pose.pose.orientation.z = q_w_curr.z();
@@ -262,10 +273,52 @@ Modifying the four '.cpp' files in the src file
                     break;
     ```
 
-Compiling Aloam:
+## 3.Usage
+
+###3.1 Compiling Aloam
+
+Modify the "xxx" of "/home/xxx/txt/aloam.txt" in laserMapping.cpp to your own user name
+
+Compiling Aloam
 
 ```bash
-cd ..
+cd catkin_ws
 catkin_make
+```
+
+###3.2 Perpare to do evo
+
+Create a new files named "txt", and generate aloam.txt:
+
+```bash
+cd
+mkdir txt
+touch aloam.txt
+```
+Then, copy the groundtruth files in the same file
+
+###3.3 Run Aloam
+
+There are three launch files in the package related to run Aloam directly, they are:
+
+* aloam_velodyne_VLP_16.launch
+* aloam_velodyne_HDL_32.launch
+* aloam_velodyne_HDL_64.launch
+
+Which launch file will be used is depend on the number of the mechanical LIDAR's line. For example, if the mechanical LIDAR recorded in the rosbag is 64 lines. The following command should be run for using Aloam
+
+```bash
+cd catkin_ws
 source devel/setup.bash
+roslaunch aloam_velodyne aloam_velodyne_HDL_64.launch
+```
+
+The aloam.txt in the txt file will store the aloam lidar odometry reuslt after finishing the Aloam alogrithm
+
+Evaluate the performance of the alogrithm by following command:
+
+```bash
+cd 
+cd txt
+evo_ape kitti 05.txt aloam.txt -r full -va --plot --plot_mode xz
 ```

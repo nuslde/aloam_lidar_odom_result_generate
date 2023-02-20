@@ -295,6 +295,7 @@ cd
 mkdir txt
 touch aloam.txt
 ```
+
 Then, copy the groundtruth files in the same file
 
 ### 3.3 Run Aloam
@@ -325,8 +326,10 @@ evo_ape kitti 05.txt aloam.txt -r full -va --plot --plot_mode xz
 
 **Note:** Sometime, there will be an error such as the following:
 
-![evo_result](images/evo_result.png)
+![evo_error](images/evo_error.png)
 
 The error is caused by the different poses number of the two .txt files, and the error can not be dealed with by using "evo_ape kitti 05.txt aloam.txt -r full -va --plot --plot_mode xz --correct_scale --align" commend ([reason](https://github.com/MichaelGrupp/evo/issues/152) is provide by the evo tool's developer - Michael Grupp)
 
-The method I use to deal with the problem is by add or decrease the poses in the groundtruth file
+![reason](images/reason.png)
+
+The method I deal with the problem by add or decrease the poses in the groundtruth file

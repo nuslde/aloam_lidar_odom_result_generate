@@ -11,7 +11,7 @@
 * System Requirements:
   * Ubuntu 20.04
   * ROS Noetic
-  * C++11 and above
+  * C++14
   * CMake: 3.0.2 and above
 * Libraries:
   * `Eigen3`

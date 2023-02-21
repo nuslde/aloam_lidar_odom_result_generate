@@ -275,7 +275,7 @@ Modifying the four '.cpp' files in the src file
 
 ## 3.Usage
 
-###3.1 Compiling Aloam
+### 3.1 Compiling Aloam
 
 Modify the "xxx" of "/home/xxx/txt/aloam.txt" in laserMapping.cpp to your own user name
 
